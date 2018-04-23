@@ -3,11 +3,12 @@ var express = require('express'),
     port = process.env.PORT || 3000,
     mongoose = require('mongoose'),
     Task = require('./api/models/todoListModel'), //created model loading here
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    mongodbUri = process.env.MONGODB_URI || 'mongodb://localhost/Tododb';
 
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/Tododb');
+mongoose.connect(mongodbUri);
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
